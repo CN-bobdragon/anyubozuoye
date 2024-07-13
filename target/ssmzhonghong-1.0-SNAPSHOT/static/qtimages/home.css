@@ -1,0 +1,156 @@
+.carousel-add .carousel-caption a {
+	padding: 10px 80px;
+	color: #fff;
+	line-height: 55px;
+	text-align: center;
+	background-color: #ff0000;
+	font-size: 22px;
+	text-decoration: none;
+}
+.carousel-add .carousel-caption a:hover {
+	background-color: #b6965f;
+}
+	
+.carousel-add .carousel-indicators .active {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin: 0;
+	border: none;
+	background-color: #fff;
+}
+
+.carousel-add .carousel-indicators li {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.5);
+	border: none;
+	
+	/*border-radius: 2px;*/
+}
+@media only screen and (min-width: 767px) {
+	margin:0 10px;
+}
+#myCarousel img{
+	width: 100%;
+} 
+.text-box div{
+	height: 320px;
+}
+.text-box .g-firstsec2-list>li {
+    height: 320px;
+}
+
+.zhp-title {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 48%;
+    text-shadow:5px 2px 4px #6b6b6b;
+}
+.zhp-title-p1{
+	font-size: 24px;
+	margin: 0px;
+	
+}
+.zhp-title-p2{
+	font-size: 18px;
+	margin: 0px;
+	
+}
+.zhaop-link{
+	width: 140px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+    background: #b6965f;
+    border-radius: 3px;
+    color: #FFFFFF;
+    display: block; 
+   	position: absolute;
+    top: 85%;
+    right:3%;
+}
+.zhaop-link:hover{
+	color: #fff;
+	text-decoration: none;
+	box-shadow: 0 10px 20px 5px #f2b5b5;
+}
+
+.zhp-img .fright{
+	right:0%;
+}
+.zhp-img img{
+	width: 100%;
+}
+.zhp-img li{
+	height: 378px;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px)
+{
+.text-box div {
+    height: 235px;
+}
+.text-box .g-firstsec2-list>li {
+    height: 235px;
+}	
+
+.zhaop-link{
+	width: 40%;
+    height: 15%;
+    line-height: 28px;
+    font-size: 12px;
+    top:74%;
+	right: 0%;
+}
+
+.carousel-add .carousel-caption a{
+	padding: 8px 40px;
+    color: #fff;
+    line-height: 20px;
+    font-size: 15px; 
+}
+.carousel-add .carousel-indicators .active, .carousel-add .carousel-indicators li {
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;  
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    // height: 200px;
+}
+
+.zhp-title-p1{
+	font-size: 14px;
+	margin: 0px;
+	
+}
+.zhp-title-p2{
+	font-size: 12px;
+	margin: 0px;
+	
+}
+.zhp-list-nr>li {
+    width: 50%;
+}
+
+.zhp-img li {
+    height: auto;
+}
+.zhp-img .fright{
+	top: 85%;
+}
+.carousel-caption {
+	bottom: 60px;
+}
+}

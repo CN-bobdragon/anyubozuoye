@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.XiaozuMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Xiaozu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="mingcheng" property="mingcheng" jdbcType="VARCHAR" />
+<result column="tupian" property="tupian" jdbcType="VARCHAR" />
+<result column="huodongid" property="huodongid" jdbcType="INTEGER" />
+<result column="chengji" property="chengji" jdbcType="INTEGER" />
+<result column="usersid" property="usersid" jdbcType="INTEGER" />
+
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id,  mingcheng, tupian, huodongid, chengji, usersid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.entity.XiaozuExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from xiaozu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from xiaozu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xiaozu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.entity.XiaozuExample" >
+    delete from xiaozu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.entity.Xiaozu" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into xiaozu (mingcheng,tupian,huodongid,chengji,usersid)
+    values (#{mingcheng,jdbcType=VARCHAR},#{tupian,jdbcType=VARCHAR},#{huodongid,jdbcType=INTEGER},#{chengji,jdbcType=INTEGER},#{usersid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Xiaozu" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into xiaozu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mingcheng != null" >
+    mingcheng,
+</if>
+<if test="tupian != null" >
+    tupian,
+</if>
+<if test="huodongid != null" >
+    huodongid,
+</if>
+<if test="chengji != null" >
+    chengji,
+</if>
+<if test="usersid != null" >
+    usersid,
+</if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mingcheng != null" >
+    #{mingcheng,jdbcType=VARCHAR},
+</if>
+<if test="tupian != null" >
+    #{tupian,jdbcType=VARCHAR},
+</if>
+<if test="huodongid != null" >
+    #{huodongid,jdbcType=INTEGER},
+</if>
+<if test="chengji != null" >
+    #{chengji,jdbcType=INTEGER},
+</if>
+<if test="usersid != null" >
+    #{usersid,jdbcType=INTEGER},
+</if>
+
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.entity.XiaozuExample" resultType="java.lang.Integer" >
+    select count(*) from xiaozu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update xiaozu
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.mingcheng != null" >
+    mingcheng = #{record.mingcheng,jdbcType=VARCHAR},
+</if>
+<if test="record.tupian != null" >
+    tupian = #{record.tupian,jdbcType=VARCHAR},
+</if>
+<if test="record.huodongid != null" >
+    huodongid = #{record.huodongid,jdbcType=INTEGER},
+</if>
+<if test="record.chengji != null" >
+    chengji = #{record.chengji,jdbcType=INTEGER},
+</if>
+<if test="record.usersid != null" >
+    usersid = #{record.usersid,jdbcType=INTEGER},
+</if>
+
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update xiaozu
+    set id = #{record.id,jdbcType=INTEGER},
+      mingcheng = #{record.mingcheng,jdbcType=VARCHAR},tupian = #{record.tupian,jdbcType=VARCHAR},huodongid = #{record.huodongid,jdbcType=INTEGER},chengji = #{record.chengji,jdbcType=INTEGER},usersid = #{record.usersid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Xiaozu" >
+    update xiaozu
+    <set >
+      <if test="mingcheng != null" >
+    mingcheng = #{mingcheng,jdbcType=VARCHAR},
+</if>
+<if test="tupian != null" >
+    tupian = #{tupian,jdbcType=VARCHAR},
+</if>
+<if test="huodongid != null" >
+    huodongid = #{huodongid,jdbcType=INTEGER},
+</if>
+<if test="chengji != null" >
+    chengji = #{chengji,jdbcType=INTEGER},
+</if>
+<if test="usersid != null" >
+    usersid = #{usersid,jdbcType=INTEGER},
+</if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Xiaozu" >
+    update xiaozu
+    set mingcheng = #{mingcheng,jdbcType=VARCHAR},tupian = #{tupian,jdbcType=VARCHAR},huodongid = #{huodongid,jdbcType=INTEGER},chengji = #{chengji,jdbcType=INTEGER},usersid = #{usersid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectCountGroup" resultType="map">
+    select ${column} category, count(1) total from xiaozu group by category
+  </select>
+  <select id="selectSumGroup" resultType="map">
+    select ${xColumn} category, sum(${yColumn}) total from xiaozu group by category
+  </select>
+  <select id="selectCountGroupByDate" resultType="map">
+    <if test = 'dateType == "dd"'>
+      select  DATE_FORMAT(${column},'%Y-%m-%d') category, count(1) total from xiaozu group by category
+    </if>
+    <if test = 'dateType == "mm"'>
+      select  DATE_FORMAT(${column},'%Y-%m') category, count(1) total from xiaozu group by category
+    </if>
+    <if test = 'dateType == "yy"'>
+      select  DATE_FORMAT(${column},'%Y') category, count(1) total from xiaozu group by category
+    </if>
+
+  </select>
+  <select id="selectSumGroupByDate" resultType="map">
+    <if test = 'dateType == "dd"'>
+      select  DATE_FORMAT(${xColumn},'%Y-%m-%d') category, sum(${yColumn}) total from xiaozu group by category
+    </if>
+    <if test = 'dateType == "mm"'>
+      select  DATE_FORMAT(${xColumn},'%Y-%m') category, sum(${yColumn}) total from xiaozu group by category
+    </if>
+    <if test = 'dateType == "yy"'>
+      select  DATE_FORMAT(${xColumn},'%Y') category, sum(${yColumn}) total from xiaozu group by category
+    </if>
+  </select>
+  <select id="selectCountGroupByFatherId" resultType="map">
+    select b.${fatherTableColumn} category, count(1) total from xiaozu a left join ${fatherTableName} b on a.${fatherTableId} = b.id group by category
+  </select>
+  <select id="selectSumGroupByFatherId" resultType="map">
+    select b.${fatherTableColumn} category, sum(a.${column}) total from xiaozu a left join ${fatherTableName} b on a.${fatherTableId} = b.id group by category
+  </select>
+</mapper>
